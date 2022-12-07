@@ -151,7 +151,64 @@ func TestIncr(t *testing.T) {
 		assert.Equal(t, tc.want, respGet, "The two words should be the same.")
 	}
 }
+func TestDecr(t *testing.T) {
+	t.Log("NewMemCache Decr")
+	mn := NewMemCache()
+	testCase := []struct {
+		name string
+		keys string
+		args interface{}
+		want interface{}
+	}{
+		{
+			"DecrPositive",
+			"testMe",
+			1,
+			0,
+		},
+		{
+			"DecrPositiveNegativeNumber",
+			"testMe",
+			-1,
+			-2,
+		},
+		{
+			"DecrPositiveNegativeNumber",
+			"testMe0",
+			-10,
+			-11,
+		},
+		{
+			"DecrPositiveZeroNumber",
+			"testMe0",
+			0,
+			-1,
+		},
+		{
+			"DecrPositiveZeroNumber",
+			"testMe01",
+			999999999999999,
+			999999999999998,
+		},
+		{
+			"DecrPositiveZeroNumber",
+			"testMe01",
+			-999999999999999,
+			-1000000000000000,
+		},
+	}
+	timeout := 10 * time.Second
+	for _, tc := range testCase {
+		t.Log(tc.name)
+		//put to cache
+		err := mn.Put(tc.keys, tc.args, timeout)
+		assert.Nil(t, err)
+		// incr
+		respErr := mn.Decr(tc.keys)
+		assert.Nil(t, respErr)
+		//get
+		respGet := mn.Get(tc.keys)
 
-//
-
-//Decr(key string) error
+		assert.Equal(t, tc.want, respGet, "The two words should be the same.")
+	}
+}
