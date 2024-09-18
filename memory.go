@@ -37,7 +37,7 @@ type MemoryCache struct {
 }
 
 // NewMemoryCache returns a new MemoryCache.
-func NewMemCache() Cache {
+func NewMemoryCache() Cache {
 	cache := MemoryCache{items: make(map[string]*MemoryItem)}
 	return &cache
 }

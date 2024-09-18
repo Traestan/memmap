@@ -13,23 +13,23 @@ import (
 
 // type endpointSuite struct {
 // 	suite.Suite
-// 	service NewMemCache
+// 	service NewMemoryCache
 // }
 
-// func (s *endpointSuite) SetupTest() {
-// 	s.service = NewMemCache
-// }
-func TestNewMemCache(t *testing.T) {
-	t.Log("NewMemCache init")
-	mn := NewMemCache()
+//	func (s *endpointSuite) SetupTest() {
+//		s.service = NewMemoryCache
+//	}
+func TestNewMemoryCache(t *testing.T) {
+	t.Log("NewMemoryCache init")
+	mn := NewMemoryCache()
 
 	//assert.Equal(t, Cache, mn, "The two words should be the same.")
 	//assert.Nil(t, mn)
 	assert.NotNil(t, mn)
 }
 func TestPut(t *testing.T) {
-	t.Log("NewMemCache Put")
-	mn := NewMemCache()
+	t.Log("NewMemoryCache Put")
+	mn := NewMemoryCache()
 	//testKey := "testMe"
 	testCase := []struct {
 		name string
@@ -63,8 +63,8 @@ func TestPut(t *testing.T) {
 }
 
 func TestIsExist(t *testing.T) {
-	t.Log("NewMemCache IsExist")
-	mn := NewMemCache()
+	t.Log("NewMemoryCache IsExist")
+	mn := NewMemoryCache()
 	testCase := []struct {
 		name string
 		keys string
@@ -103,8 +103,8 @@ func TestIsExist(t *testing.T) {
 	}
 }
 func TestIncr(t *testing.T) {
-	t.Log("NewMemCache Incr")
-	mn := NewMemCache()
+	t.Log("NewMemoryCache Incr")
+	mn := NewMemoryCache()
 	testCase := []struct {
 		name string
 		keys string
@@ -152,8 +152,8 @@ func TestIncr(t *testing.T) {
 	}
 }
 func TestDecr(t *testing.T) {
-	t.Log("NewMemCache Decr")
-	mn := NewMemCache()
+	t.Log("NewMemoryCache Decr")
+	mn := NewMemoryCache()
 	testCase := []struct {
 		name string
 		keys string
